@@ -23,30 +23,47 @@ public class VirtualPetB {
      return name + "'s Information: \n" + "Energy: " + energyLevel + "\n" + "Happiness: " + happinessLevel + "\n" +
             "Weight: " + weight + "\n" + "Age: " + ageM + " months and " + ageY + " years";
    }
-   public void feed(Food food){
-     energyLevel += food.getEnergyIncrease();
-      if(energyLevel > 10){
-        energyLevel = 10;
-      }
-      if(energyLevel < 0){
-        energyLevel = 0;
-      }
+   public void feed(Food food) {
+       energyLevel += food.getEnergyRating();
+       happinessLevel += food.getHappinessRating();
+       weight += food.getWeightGain();
 
-      happinessLevel += food.getHappinessIncrease();
-      if(happinessLevel > 10){
-         happinessLevel = 10;
-      }
-      if(happinessLevel < 0){
-         happinessLevel = 0;
-      }
-
-
-      weight += food.getWeightGain();
+       if (energyLevel > 10) {
+           energyLevel = 10;
+       }
+       if (energyLevel < 0) {
+           energyLevel = 0;
+       }
+       if (happinessLevel > 10) {
+           happinessLevel = 10;
+       }
+       if (happinessLevel < 10) {
+           happinessLevel = 0;
+       }
    }
-   public int getEnergyLevel() {
-     return energyLevel;
-   }
-   public int getHappinessLevel() {
-     return happinessLevel;
+   public boolean play(Game game){
+       weight -= game.getWeightDecr();
+
+       if(weight < 5){
+           weight = 5;
+       }
+
+       boolean won = game.isWinner();
+
+       if(won){
+           happinessLevel += game.getHappinessIncr();
+       }
+       else{
+           happinessLevel -= game.getHappinessIncr();
+       }
+
+       if(happinessLevel > 10){
+           happinessLevel = 10;
+       }
+       if(happinessLevel < 10){
+           happinessLevel = 0;
+       }
+
+       return won;
    }
 }

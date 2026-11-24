@@ -6,7 +6,8 @@ public class Food {
     private int happinessIncrease;
     private int weightGain;
 
-    public Food(String name; int energyIncrease; int happinessIncrease; int weightGain){
+    public Food(String name, int energyIncrease, int happinessIncrease,
+    int weightGain){
         this.name = name;
         this.energyIncrease = energyIncrease;
         this.happinessIncrease = happinessIncrease;
@@ -15,10 +16,10 @@ public class Food {
     public String getName() {
         return name;
     }
-    public int getEnergyIncrease() {
+    public int getEnergyRating() {
         return energyIncrease;
     }
-    public int getHappinessIncrease() {
+    public int getHappinessRating() {
         return happinessIncrease;
     }
     public int getWeightGain() {

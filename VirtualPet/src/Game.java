@@ -19,4 +19,7 @@ public class Game {
     public int getWeightDecr() {
         return weightDecr;
     }
+    public boolean isWinner(){
+        return Math.random() < 0.5;
+    }
 }
